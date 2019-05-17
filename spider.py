@@ -20,7 +20,7 @@ class Spider:
         Spider.queue_file = Spider.project_name + '/queue.txt'
         Spider.crawled_file = Spider.project_name + '/crawled.txt'
         self.boot(self)
-        self.crawled_page('First_Spider', Spider.base_url)
+        self.crawl_page('First_Spider', Spider.base_url)
 
     @staticmethod
     def boot(self):

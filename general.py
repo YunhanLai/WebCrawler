@@ -8,11 +8,10 @@ def create_project_dir(directory):
         os.makedirs(directory)
 
 
-
 # Create Queue and Crawled files
 def create_data_file(project_name, base_url):
     queue = project_name + '/queue.txt'
-    crawler = project_name + '/cralwer.txt'
+    crawler = project_name + '/crawled.txt'
     if not os.path.isfile(queue):
         write_file(queue, base_url)
     if not os.path.isfile(crawler):
@@ -21,9 +20,6 @@ def create_data_file(project_name, base_url):
 
 # Create a new file
 def write_file(path, data):
-    create_project_dir(path)
-    if not os.path.isfile(path):
-        write_file(path, '')
     with open(path, 'w') as f:
         f.write(data)
 
