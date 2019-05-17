@@ -8,6 +8,7 @@ def create_project_dir(directory):
         os.makedirs(directory)
 
 
+
 # Create Queue and Crawled files
 def create_data_file(project_name, base_url):
     queue = project_name + '/queue.txt'
@@ -20,7 +21,10 @@ def create_data_file(project_name, base_url):
 
 # Create a new file
 def write_file(path, data):
-    with open(path, 'w', encoding='utf-8') as f:
+    create_project_dir(path)
+    if not os.path.isfile(path):
+        write_file(path, '')
+    with open(path, 'w') as f:
         f.write(data)
 
 
@@ -47,7 +51,13 @@ def file_to_set(file_name):
 
 
 # Iterate through a set, each item will be a new line in the file
-def set_to_file(links, file):
-    delete_file_contents(file)
-    for link in sorted(links):
-        append_to_file(file, link)
+# def set_to_file(links, file):
+#     delete_file_contents(file)
+#     for link in sorted(links):
+#         append_to_file(file, link)
+
+def set_to_file(links, file_name):
+    delete_file_contents(file_name)
+    with open(file_name,"w") as f:
+        for l in sorted(links):
+            f.write(l+"\n")
